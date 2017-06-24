@@ -1,15 +1,15 @@
 #include "unity.h"
 #include "simplemock.h"
+#include "mock_multiplydivide.h"  //mock at infront to let ceedling know u wan mock it
 
-void setUp(void)
-{
-}
+void setUp(void){}
+void tearDown(void){}
 
-void tearDown(void)
+void test_simplemock_add(void)
 {
-}
-
-void test_simplemock_NeedToImplement(void)
-{
-    TEST_IGNORE_MESSAGE("Need to Implement simplemock");
+  int result;
+  multiply_ExpectAndReturn(2, 3, 6);
+  divide_ExpectAndReturn(10, 5, 2);
+  result = addMultiplyAndDivide(2, 3, 10, 5);
+  TEST_ASSERT_EQUAL(8,result);
 }
